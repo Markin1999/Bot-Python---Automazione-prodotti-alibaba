@@ -6,8 +6,11 @@ from selenium.webdriver.common.keys import Keys
 from selenium_stealth import stealth
 from letturaExcel import letturaExcel
 from modificaMacro import modificaMacro 
+from modificaMacro import menoUnoMacro
 
 
+
+# Migliorie da apportare: A ogni ricerca se il file si interrompe non fare modificaMacro() per sicurezza    
 def primoLancio():
     try:
         ciclo_completato = False  
@@ -38,25 +41,27 @@ def primoLancio():
 
         time.sleep(3)
 
-        # 🔹 Ciclo principale di ricerca
+      
         for t in range(lunghezzaRicerca):
 
             macroAttuale = int(letturaExcel("NumeroProcesso")[0])
 
             try:
                 time.sleep(3)
+                
 
                 search_box = driver.find_element(By.XPATH, '//input[@aria-label="Search Alibaba"]')
                 time.sleep(2)
                 search_box.send_keys(Keys.COMMAND + "a")  
                 search_box.send_keys(Keys.BACKSPACE)      
+                modificaMacro()  
                 time.sleep(3)   
                 search_box.send_keys(letturaExcel("Ricerca")[macroAttuale])
                 time.sleep(1)
                 search_box.send_keys(Keys.RETURN)
 
                 time.sleep(5)
-                modificaMacro()  
+                
 
                 print(f"✅ Ricerca {t+1}/{lunghezzaRicerca} completata")
                 ciclo_completato = True  
@@ -83,7 +88,10 @@ def primoLancio():
         print(f"⚠️ Errore imprevisto: {e}")
     finally:
         try:
+            
             driver.quit()
+            menoUnoMacro()
+            
         except:
             pass
 
