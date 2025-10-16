@@ -7,6 +7,7 @@ from selenium_stealth import stealth
 from letturaExcel import letturaExcel
 from modificaMacro import modificaMacro 
 from modificaMacro import menoUnoMacro
+from copiaHtml import copiaHtml
 
 
 
@@ -40,7 +41,6 @@ def primoLancio():
         )
 
         time.sleep(3)
-
       
         for t in range(lunghezzaRicerca):
 
@@ -62,7 +62,7 @@ def primoLancio():
 
                 time.sleep(5)
                 
-
+                copiaHtml(driver, letturaExcel("NumeroProcesso")[0])
                 print(f"✅ Ricerca {t+1}/{lunghezzaRicerca} completata")
                 ciclo_completato = True  
 
@@ -78,8 +78,6 @@ def primoLancio():
         else:
             print("🔴 Ciclo interrotto: ultima modificaMacro() saltata per sicurezza.")
 
-        
-
     except IndexError:
         print("❌ Errore: indice fuori dai limiti della lista 'Ricerca' o 'NumeroProcesso'.")
     except FileNotFoundError:
@@ -94,7 +92,5 @@ def primoLancio():
             
         except:
             pass
-
-
 
 primoLancio()
