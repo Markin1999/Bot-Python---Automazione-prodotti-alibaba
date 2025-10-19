@@ -16,7 +16,7 @@ def primoLancio():
     try:
         ciclo_completato = False  
 
-        lunghezzaRicerca = len(letturaExcel("Ricerca")) - 1
+        lunghezzaRicerca = len(letturaExcel("Ricerca"))
 
 
         options = Options()
@@ -53,14 +53,15 @@ def primoLancio():
                 time.sleep(2)
                 search_box.send_keys(Keys.COMMAND + "a")  
                 search_box.send_keys(Keys.BACKSPACE)      
+                time.sleep(3)
                 modificaMacro()  
-                time.sleep(3)   
+                time.sleep(3) 
                 search_box.send_keys(letturaExcel("Ricerca")[macroAttuale])
                 time.sleep(1)
                 search_box.send_keys(Keys.RETURN)
 
                 time.sleep(5)
-                
+
                 dataFrameHtml(driver, letturaExcel("NumeroProcesso")[0])
                 print(f"✅ Ricerca {t+1}/{lunghezzaRicerca} completata")
                 ciclo_completato = True  
