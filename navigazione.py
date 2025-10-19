@@ -7,7 +7,7 @@ from selenium_stealth import stealth
 from letturaExcel import letturaExcel
 from modificaMacro import modificaMacro 
 from modificaMacro import menoUnoMacro
-from copiaHtml import copiaHtml
+from dataFrameHtml import dataFrameHtml
 
 
 
@@ -17,7 +17,6 @@ def primoLancio():
         ciclo_completato = False  
 
         lunghezzaRicerca = len(letturaExcel("Ricerca")) - 1
-        
 
 
         options = Options()
@@ -62,7 +61,7 @@ def primoLancio():
 
                 time.sleep(5)
                 
-                copiaHtml(driver, letturaExcel("NumeroProcesso")[0])
+                dataFrameHtml(driver, letturaExcel("NumeroProcesso")[0])
                 print(f"✅ Ricerca {t+1}/{lunghezzaRicerca} completata")
                 ciclo_completato = True  
 

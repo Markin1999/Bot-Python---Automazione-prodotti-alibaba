@@ -5,6 +5,7 @@ def copiaHtml(driver, NumeroProcesso):
     try:
 
         html = driver.execute_script("return document.documentElement.outerHTML;")
+        estraiInputHtml(html,)
 
         file_name = f"pagina_{int(NumeroProcesso)}.html"
         percorso_completo = os.path.join("PagineHtml", file_name)

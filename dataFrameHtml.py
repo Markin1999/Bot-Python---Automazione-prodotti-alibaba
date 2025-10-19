@@ -115,10 +115,10 @@ class Prodotto:
         if s.lower() in {"none", "nan"}:
             return None
         if ban_symbols and any(x in s for x in ["€","#","(",")"]):
-            # evita titoli contaminati da simboli non testuali
+          
             return None
         if prefer_company:
-            # normalizza forme tipiche azienda
+
             s = s.replace("  ", " ")
         return s
 
@@ -130,13 +130,12 @@ class Prodotto:
 import os
 import pandas as pd
 
-def dataFrameHtml():
+def dataFrameHtml(driver, numero_processo):
 
-    file_name = "pagina_2.html"
+    file_name = f"pagina_{numero_processo}.html"
     percorso_completo = os.path.join("PagineHtml", file_name)
 
-    with open(percorso_completo, "r", encoding="utf-8") as f:
-        html = f.read()
+    html = driver.execute_script("return document.documentElement.outerHTML;")
 
     soupInput = BeautifulSoup(html, 'html.parser')
 
@@ -144,9 +143,8 @@ def dataFrameHtml():
     if not wrappers:
         wrappers = soupInput.select(".searchx-offer-item, .list-card, .searchx-product-card")
     if not wrappers:
-        wrappers = soupInput.find_all("div", attrs={"data-ctrdot": True})  # product id presente nelle card
+        wrappers = soupInput.find_all("div", attrs={"data-ctrdot": True})
 
-    # 2) Estrai prodotti e de-duplica su (titolo, azienda, prezzo)
     prodotti = []
     seen = set()
     for w in wrappers:
@@ -158,19 +156,21 @@ def dataFrameHtml():
             seen.add(key)
             prodotti.append(p)
 
-    # 3) DataFrame con colonne ordinate
+
     colonne = ["titolo", "prezzo", "ordineMinimo", "azienda", "valutazione"]
     rows = [{col: getattr(p, col, None) for col in colonne} for p in prodotti]
     df = pd.DataFrame(rows, columns=colonne)
 
-    # 4) Pulizia valori e salvataggio
+
     os.makedirs("PagineHtml", exist_ok=True)
     df = df.fillna("").applymap(lambda x: " ".join(str(x).split()))
-    output_path = os.path.join("PagineHtml", "prodotti.xlsx")
+    output_path = os.path.join("PagineHtml", f"prodotti{numero_processo}.xlsx")
     df.to_excel(output_path, index=False, engine="openpyxl")
 
     print(f"✅ Prodotti unici: {len(df)}")
     print(f"✅ File Excel salvato in: {output_path}")
     return df
 
-dataFrameHtml()
+
+    if __name__ == "__main__":
+        pass
