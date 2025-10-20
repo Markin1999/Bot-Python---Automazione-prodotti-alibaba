@@ -8,6 +8,14 @@ from letturaExcel import letturaExcel
 from modificaMacro import modificaMacro 
 from modificaMacro import menoUnoMacro
 from dataFrameHtml import dataFrameHtml
+from cambiaPagina import cambiaPagina
+import re
+
+def _norm_num(x):
+    s = str(x).strip()
+    s = re.sub(r'\.0+$', '', s)
+    return s
+
 
 
 
@@ -61,8 +69,21 @@ def primoLancio():
                 search_box.send_keys(Keys.RETURN)
 
                 time.sleep(5)
+                ricerca = letturaExcel("Ricerca")[macroAttuale]
+                numero_processo = _norm_num(letturaExcel("NumeroProcesso")[0])
 
-                dataFrameHtml(driver, letturaExcel("Ricerca")[macroAttuale] ,letturaExcel("NumeroProcesso")[0])
+          
+                dataFrameHtml(driver, ricerca, numero_processo)
+                time.sleep(5)
+        
+                cambiaPagina(driver, '//*[@id="sse-fluent-offerlist-ssr"]/div[3]/div/div/a[2]/span')
+                time.sleep(5)
+                dataFrameHtml(driver, ricerca, f"{numero_processo}-01")
+                time.sleep(5)
+                cambiaPagina(driver, '//*[@id="sse-fluent-offerlist-ssr"]/div[3]/div/div/a[3]/span')
+                time.sleep(5)
+                dataFrameHtml(driver, ricerca, f"{numero_processo}-02")
+
                 print(f"✅ Ricerca {t+1}/{lunghezzaRicerca} completata")
                 ciclo_completato = True  
 

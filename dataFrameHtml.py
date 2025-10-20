@@ -257,7 +257,7 @@ def dataFrameHtml(driver, nomeRicerca, numero_processo):
 
         os.makedirs("PagineHtml", exist_ok=True)
         df = df.fillna("").applymap(lambda x: " ".join(str(x).split()))
-        output_path = os.path.join("PagineHtml", f"{int(numero_processo)}-{nomeRicerca}.xlsx")
+        output_path = os.path.join("PagineHtml", f"{(numero_processo)}-{nomeRicerca}.xlsx")
         df.to_excel(output_path, index=False, engine="openpyxl")
 
         print(f"✅ Prodotti unici: {len(df)}")
