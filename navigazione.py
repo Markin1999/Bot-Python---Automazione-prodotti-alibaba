@@ -62,7 +62,7 @@ def primoLancio():
 
                 time.sleep(5)
 
-                dataFrameHtml(driver, letturaExcel("NumeroProcesso")[0])
+                dataFrameHtml(driver, letturaExcel("Ricerca")[macroAttuale] ,letturaExcel("NumeroProcesso")[0])
                 print(f"✅ Ricerca {t+1}/{lunghezzaRicerca} completata")
                 ciclo_completato = True  
 

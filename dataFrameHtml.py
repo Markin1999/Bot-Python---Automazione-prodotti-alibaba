@@ -217,9 +217,9 @@ import pandas as pd
 import traceback
 from bs4 import BeautifulSoup
 
-def dataFrameHtml(driver, numero_processo):
+def dataFrameHtml(driver, nomeRicerca, numero_processo):
     try:
-        file_name = f"pagina_{numero_processo}.html"
+        file_name = f"{nomeRicerca}{numero_processo}.html"
         percorso_completo = os.path.join("PagineHtml", file_name)
 
         html = driver.execute_script("return document.documentElement.outerHTML;")
@@ -257,7 +257,7 @@ def dataFrameHtml(driver, numero_processo):
 
         os.makedirs("PagineHtml", exist_ok=True)
         df = df.fillna("").applymap(lambda x: " ".join(str(x).split()))
-        output_path = os.path.join("PagineHtml", f"prodotti{numero_processo}.xlsx")
+        output_path = os.path.join("PagineHtml", f"{int(numero_processo)}-{nomeRicerca}.xlsx")
         df.to_excel(output_path, index=False, engine="openpyxl")
 
         print(f"✅ Prodotti unici: {len(df)}")
