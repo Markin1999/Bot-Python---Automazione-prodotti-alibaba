@@ -69,7 +69,7 @@ def primoLancio():
                 search_box.send_keys(Keys.RETURN)
 
                 time.sleep(5)
-                ricerca = letturaExcel("Ricerca")[macroAttuale]
+                ricerca = letturaExcel("Nome")[macroAttuale]
                 numero_processo = _norm_num(letturaExcel("NumeroProcesso")[0])
 
           
