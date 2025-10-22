@@ -8,6 +8,7 @@ def scritturaExcel(wb, ws):
     ws["A1"] = "NumeroProcesso"
     ws["B1"] = "Processi"
     ws["C1"] = "Ricerca"
+    ws["D1"] = "ParoleChiave"
 
 
     prodotti = [
@@ -22,10 +23,41 @@ def scritturaExcel(wb, ws):
         "bamboo kraft recycled paper packaging boxes and mailers plastic free FSC custom branding"
    ]
 
-    # Inserisce tutti i prodotti in modo dinamico
-    for i, prodotto in enumerate(prodotti, start=2):
+    parole_chiave = [
+        "packaging sostenibile",
+        "imballaggio sostenibile",
+        "packaging ecologico",
+        "imballaggio ecologico",
+        "packaging biodegradabile",
+        "packaging compostabile",
+        "packaging riciclabile",
+        "imballaggio riciclabile",
+        "carta kraft",
+        "carta riciclata",
+        "cellulosa di bambù",
+        "fibra di bambù",
+        "materiale riciclato",
+        "materiale ecologico",
+        "materiale sostenibile",
+        "bambù",
+        "campione gratuito",
+        "spedizione campioni",
+        "campione personalizzato",
+        "packaging personalizzato",
+        "imballaggio personalizzato",
+        "scatola ecologica",
+        "scatola sostenibile"
+    ]
+
+
+    righe_max = max(len(prodotti), len(parole_chiave))
+
+    for i in range(2, righe_max + 2):
+        prodotto = prodotti[i - 2] if i - 2 < len(prodotti) else ""
+        parola = parole_chiave[i - 2] if i - 2 < len(parole_chiave) else ""
         ws[f"B{i}"] = str(i - 1)
         ws[f"C{i}"] = prodotto
+        ws[f"D{i}"] = parola
 
 
     wb.save(file_path)

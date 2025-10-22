@@ -3,6 +3,8 @@
 from pathlib import Path
 import pandas as pd
 import re
+from ricercaTitolo import ricercaTitolo
+
 
 def TopAziende():
 
@@ -13,6 +15,7 @@ def TopAziende():
     if not files:
         raise FileNotFoundError("Nessun file .xlsx trovato in 'All'")
 
+
     for f in files:
         df = pd.read_excel(f, sheet_name=0)
 
@@ -21,25 +24,42 @@ def TopAziende():
             continue
 
         conteggi = {}
+        titoli=[] or "none"
 
-        for nome, ricerca_corrente, prezzo_corrente in zip(df['azienda'], df['ricerca'], df['prezzo']):
-            if pd.isna(nome) or pd.isna(ricerca_corrente) or pd.isna(prezzo_corrente):
-                continue  # salta celle vuote
+
+        for nome, ricerca_corrente, prezzo_corrente, titoloCorrente in zip(df['azienda'], df['ricerca'], df['prezzo'], df['titolo']):
+            if pd.isna(nome) or pd.isna(ricerca_corrente) or pd.isna(prezzo_corrente) or pd.isna(titoloCorrente):
+                continue  
+
+            parole_trovate = ricercaTitolo(titoloCorrente)
 
             if nome not in conteggi:
-                conteggi[nome] = {"volte": 1, "ricerche": [ricerca_corrente], "prezzo_medio": prezzo_corrente}
+                conteggi[nome] = {"volte": 1, "ricerche": [ricerca_corrente], "prezzo_medio": prezzo_corrente, "parole_chiave": [parole_trovate]}
             else:
                 conteggi[nome]["volte"] += 1
                 conteggi[nome]["prezzo_medio"] = (conteggi[nome]["prezzo_medio"] + prezzo_corrente) / 2
                 if ricerca_corrente not in conteggi[nome]["ricerche"]:
                     conteggi[nome]["ricerche"].append(ricerca_corrente)
+                if parole_trovate not in conteggi[nome]["parole_chiave"]:
+                    conteggi[nome]["parole_chiave"].append(parole_trovate)
+                
 
         tutteLeAziende = [
             {
                 "azienda": k,
                 "volte in cui appare": v["volte"],
                 "ricerche": ", ".join(v["ricerche"]),
-                "prezzo": v["prezzo_medio"]  
+                "prezzo": v["prezzo_medio"],
+                "parole chiave": ", ".join(
+                    sorted(set(
+                        p
+                        for sub in v.get("parole_chiave", [])
+                        for p in (sub.keys() if isinstance(sub, dict) else sub if isinstance(sub, list) else [sub])
+                        if isinstance(p, str)
+                            ))
+                        ) if v.get("parole_chiave") else ""
+
+
             }
             for k, v in conteggi.items()
         ]
