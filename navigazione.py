@@ -9,6 +9,7 @@ from modificaMacro import modificaMacro
 from modificaMacro import menoUnoMacro
 from dataFrameHtml import dataFrameHtml
 from cambiaPagina import cambiaPagina
+from NuovaLetturaExcel import nuovaLetturaExcel
 import re
 
 def _norm_num(x):
@@ -24,7 +25,8 @@ def primoLancio():
     try:
         ciclo_completato = False  
 
-        lunghezzaRicerca = len(letturaExcel("Ricerca"))
+        lunghezzaRicerca = len(nuovaLetturaExcel("Ricerca"))
+        print(f"navigazione.py/ ℹ️ Lunghezza della lista 'Ricerca': {lunghezzaRicerca}")
 
 
         options = Options()
@@ -50,7 +52,9 @@ def primoLancio():
         time.sleep(3)
       
         for t in range(lunghezzaRicerca):
+            print(f"navigazione.py/ 🔎 Avvio ricerca {t} / {lunghezzaRicerca}...")
 
+            
             macroAttuale = int(letturaExcel("NumeroProcesso")[0])
 
             try:
@@ -88,30 +92,33 @@ def primoLancio():
                 ciclo_completato = True  
 
             except Exception as e:
-                print(f"⚠️ Errore durante la ricerca {t+1}: {e}")
+                print(f"navigazione.py/ ⚠️ Errore durante la ricerca {t+1}: {e}")
                 ciclo_completato = False
                 break  
 
         
         if ciclo_completato:
             modificaMacro()
-            print("🟢 Tutte le ricerche completate con successo!")
+            print("navigazione.py/ 🟢 Tutte le ricerche completate con successo!")
         else:
-            print("🔴 Ciclo interrotto: ultima modificaMacro() saltata per sicurezza.")
+           
+            print("navigazione.py/ 🔴 Ciclo interrotto: ultima modificaMacro() saltata per sicurezza.")
 
     except IndexError:
-        print("❌ Errore: indice fuori dai limiti della lista 'Ricerca' o 'NumeroProcesso'.")
+        print("navigazione.py/ ❌ Errore: indice fuori dai limiti della lista 'Ricerca' o 'NumeroProcesso'.")
     except FileNotFoundError:
-        print("❌ Errore: file Excel non trovato. Controlla il percorso.")
+        print("navigazione.py/ ❌ Errore: file Excel non trovato. Controlla il percorso.")
     except Exception as e:
-        print(f"⚠️ Errore imprevisto: {e}")
+        print(f"navigazione.py/ ⚠️ Errore imprevisto: {e}")
     finally:
         try:
             
             driver.quit()
             menoUnoMacro()
-            
         except:
             pass
+    return True
 
-primoLancio()
+if __name__ == "__main__":
+    primoLancio()
+

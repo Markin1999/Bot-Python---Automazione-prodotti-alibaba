@@ -29,7 +29,9 @@ def scritturaExcel(wb, ws):
         "packaging ecologico",
         "imballaggio ecologico",
         "packaging biodegradabile",
+        "imballaggio biodegradabile",
         "packaging compostabile",
+        "imballaggio compostabile",
         "packaging riciclabile",
         "imballaggio riciclabile",
         "carta kraft",
@@ -39,15 +41,21 @@ def scritturaExcel(wb, ws):
         "materiale riciclato",
         "materiale ecologico",
         "materiale sostenibile",
-        "bambù",
-        "campione gratuito",
-        "spedizione campioni",
-        "campione personalizzato",
+        "bambù naturale",
+        "cartone riciclato",
+        "eco friendly",
+        "prodotto ecologico",
+        "scatola ecologica",
+        "scatola sostenibile",
         "packaging personalizzato",
         "imballaggio personalizzato",
-        "scatola ecologica",
-        "scatola sostenibile"
+        "stampa personalizzata",
+        "etichetta ecologica",
+        "busta compostabile",
+        "sacchetto biodegradabile",
+        "spedizione campioni"
     ]
+
 
 
     righe_max = max(len(prodotti), len(parole_chiave))

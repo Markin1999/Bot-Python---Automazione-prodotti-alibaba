@@ -33,7 +33,7 @@ def cambiaPagina(driver, XPATH, timeout=15, tries=3):
                 # In app SPA potrebbe non diventare 'stale': piccola attesa di sicurezza
                 time.sleep(2)
 
-            print("➡️ Pagina cambiata con successo.")
+            print("cambiaPagina.py/ ➡️ Pagina cambiata con successo.")
             return True
 
         except (TimeoutException, ElementClickInterceptedException,
@@ -43,5 +43,5 @@ def cambiaPagina(driver, XPATH, timeout=15, tries=3):
             driver.execute_script("window.scrollBy(0, -120);")
             time.sleep(1)
 
-    print(f"⚠️ Errore nel cambiare pagina dopo {tries} tentativi: {last_err}")
+    print(f"cambiaPagina.py/ ⚠️ Errore nel cambiare pagina dopo {tries} tentativi: {last_err}")
     return False

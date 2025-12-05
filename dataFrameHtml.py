@@ -260,12 +260,12 @@ def dataFrameHtml(driver, nomeRicerca, numero_processo):
         output_path = os.path.join("PagineHtml", f"{(numero_processo)}-{nomeRicerca}.xlsx")
         df.to_excel(output_path, index=False, engine="openpyxl")
 
-        print(f"✅ Prodotti unici: {len(df)}")
-        print(f"✅ File Excel salvato in: {output_path}")
+        print(f"dataFrame.py/ ✅ Prodotti unici: {len(df)}")
+        print(f"dataFrame.py ✅ File Excel salvato in: {output_path}")
         return df
 
     except Exception as e:
-        print(f"⚠️ Errore in dataFrameHtml: {e}")
+        print(f"dataFrame.py/ ⚠️ Errore in dataFrameHtml: {e}")
         traceback.print_exc()
         # Rilancio l'errore per bloccare l'esecuzione a monte
         raise

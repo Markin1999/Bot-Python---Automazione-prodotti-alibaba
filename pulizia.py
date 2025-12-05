@@ -4,12 +4,12 @@ import pandas as pd
 
 def pulisciStringa():
 
-    out_dir = Path("All")
+    out_dir = Path("filePuliti")
     out_dir.mkdir(parents=True, exist_ok=True)
-
+    
     files = sorted(out_dir.glob("*.xlsx"))
     if not files:
-        raise FileNotFoundError("Nessun file .xlsx trovato in 'PagineHtml'")
+        raise FileNotFoundError("Nessun file .xlsx trovato in 'filePuliti'")
 
     for f in files:
         df = pd.read_excel(f, sheet_name=0)
@@ -45,4 +45,7 @@ def pulisciStringa():
         df.to_excel(output_file, index=False)
     return "Pulizia completata e file salvati."
 
-print(pulisciStringa())
+
+if __name__ == "__main__":
+    pulisciStringa()
+
