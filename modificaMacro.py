@@ -89,7 +89,7 @@ def menoUnoMacro():
     # Decrementa con wrap-around
     if numeroProcesso > 0:
         numeroProcesso -= 1
-        modificaExcel("A2", str(numeroProcesso))
+        modificaExcel("A2", "1")
         print(f"modificaMacro.py/ ✅ Processo diminuito: {numeroProcesso}")
     else:
         numeroProcesso = lunghezzaProcesso - 1

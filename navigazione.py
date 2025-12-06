@@ -56,7 +56,7 @@ def primoLancio():
 
             
             macroAttuale = int(letturaExcel("NumeroProcesso")[0])
-            print(f"navigazione.py/ 🔎 Avvio ricerca {macroAttuale} / {lunghezzaRicerca}...")
+            print(f"navigazione.py/ 🔎 Avvio ricerca {macroAttuale} : Rapporto {t+1}/{lunghezzaRicerca}...")
 
             try:
                 time.sleep(3)

@@ -9,6 +9,7 @@ def scritturaExcel(wb, ws):
     ws["B1"] = "Processi"
     ws["C1"] = "Ricerca"
     ws["D1"] = "ParoleChiave"
+    ws["E1"] = "Nome"
 
 
     prodotti = [
@@ -56,16 +57,30 @@ def scritturaExcel(wb, ws):
         "spedizione campioni"
     ]
 
+    nomi = [
+        "carta",
+        "carta",
+        "carta",
+        "carta",
+        "carta",
+        "carta",
+        "carta",
+        "carta"
+    ]
 
 
-    righe_max = max(len(prodotti), len(parole_chiave))
+
+    righe_max = max(len(prodotti), len(parole_chiave), len(nomi))
 
     for i in range(2, righe_max + 2):
         prodotto = prodotti[i - 2] if i - 2 < len(prodotti) else ""
         parola = parole_chiave[i - 2] if i - 2 < len(parole_chiave) else ""
+        nome = nomi[i - 2] if i - 2 < len(nomi) else ""
         ws[f"B{i}"] = str(i - 1)
         ws[f"C{i}"] = prodotto
         ws[f"D{i}"] = parola
+        ws[f"E{i}"] = nome
+
 
 
     wb.save(file_path)

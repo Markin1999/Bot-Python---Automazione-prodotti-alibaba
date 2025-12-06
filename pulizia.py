@@ -4,18 +4,19 @@ import pandas as pd
 
 def pulisciStringa():
 
-    out_dir = Path("filePuliti")
+    out_dir = Path("All")
+    filepuliti = Path("filePuliti")
     out_dir.mkdir(parents=True, exist_ok=True)
     
     files = sorted(out_dir.glob("*.xlsx"))
     if not files:
-        raise FileNotFoundError("Nessun file .xlsx trovato in 'filePuliti'")
+        raise FileNotFoundError("pulizia.py/ Nessun file .xlsx trovato in 'All'.")
 
     for f in files:
         df = pd.read_excel(f, sheet_name=0)
 
         if 'prezzo' not in df.columns:
-            print(f"⚠️ Colonna 'prezzo' non trovata durante la\ pulizia")
+            print(f"pulizia.py/ ⚠️ Colonna 'prezzo' non trovata durante la\ pulizia")
             continue
 
         prezzi = df['prezzo'].dropna()
@@ -41,9 +42,9 @@ def pulisciStringa():
             
         df.loc[df['prezzo'].notna(), 'prezzo'] = nuovi_prezzi
 
-        output_file = out_dir / f"All_Pulito.xlsx"
+        output_file = filepuliti / f"All_Pulito.xlsx"
         df.to_excel(output_file, index=False)
-    return "Pulizia completata e file salvati."
+    return "pulizia.py/ Pulizia completata e file salvati."
 
 
 if __name__ == "__main__":
