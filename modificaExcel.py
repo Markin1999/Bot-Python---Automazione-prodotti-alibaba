@@ -14,6 +14,6 @@ def modificaExcel(cella, testo):
 
     ws[cella] = testo
     wb.save(file_path)
-    print(f"✅ La cella {cella} è stata modificata correttamente in macro.xlsx")
+    print(f"modificaExcel.py/ ✅ La cella {cella} è stata modificata correttamente in macro.xlsx")
 
     

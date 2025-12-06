@@ -52,28 +52,31 @@ def primoLancio():
         time.sleep(3)
       
         for t in range(lunghezzaRicerca):
-            print(f"navigazione.py/ 🔎 Avvio ricerca {t} / {lunghezzaRicerca}...")
+            
 
             
             macroAttuale = int(letturaExcel("NumeroProcesso")[0])
+            print(f"navigazione.py/ 🔎 Avvio ricerca {macroAttuale} / {lunghezzaRicerca}...")
 
             try:
                 time.sleep(3)
-                
+                print(f"navigazione.py/ 🔎 Clicco il tasto di ricerca")
 
                 search_box = driver.find_element(By.XPATH, '//input[@aria-label="Search Alibaba"]')
                 time.sleep(2)
                 search_box.send_keys(Keys.COMMAND + "a")  
                 search_box.send_keys(Keys.BACKSPACE)      
                 time.sleep(3)
-                modificaMacro()  
                 time.sleep(3) 
-                search_box.send_keys(letturaExcel("Ricerca")[macroAttuale])
+                ricerca_testo = letturaExcel("Ricerca")[macroAttuale -1]
+                print(f"navigazione.py/ 🔎 Ricerca da effettuare: -- {ricerca_testo}")
+                search_box.send_keys(ricerca_testo)
                 time.sleep(1)
                 search_box.send_keys(Keys.RETURN)
+                
 
                 time.sleep(5)
-                ricerca = letturaExcel("Nome")[macroAttuale]
+                ricerca = letturaExcel("Nome")[macroAttuale -1]
                 numero_processo = _norm_num(letturaExcel("NumeroProcesso")[0])
 
           
@@ -88,20 +91,21 @@ def primoLancio():
                 time.sleep(5)
                 dataFrameHtml(driver, ricerca, f"{numero_processo}-02")
 
-                print(f"✅ Ricerca {t+1}/{lunghezzaRicerca} completata")
+                print(f"navigazione.py/ ✅ Ricerca {t+1}/{lunghezzaRicerca} completata")
                 ciclo_completato = True  
+                print(f"navigazione.py/ ✅ Ciclo completato, modifico la macro")
+                modificaMacro()
 
             except Exception as e:
                 print(f"navigazione.py/ ⚠️ Errore durante la ricerca {t+1}: {e}")
                 ciclo_completato = False
                 break  
 
-        
+     
         if ciclo_completato:
             modificaMacro()
             print("navigazione.py/ 🟢 Tutte le ricerche completate con successo!")
         else:
-           
             print("navigazione.py/ 🔴 Ciclo interrotto: ultima modificaMacro() saltata per sicurezza.")
 
     except IndexError:

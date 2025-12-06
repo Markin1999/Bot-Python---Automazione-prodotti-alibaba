@@ -5,33 +5,33 @@ from cercaTopAziende import TopAziende
 
 
 def tuttoCompreso():
-    print("🚀 Avvio primoLancio()...")
+    print("tuttoCompreso.py/ 🚀 Avvio primoLancio()...")
     completato = primoLancio()
     if not completato:
-        print("❌ Primo lancio non completato, interrompo il flusso.")
+        print("tuttoCompreso.py/ ❌ Primo lancio non completato, interrompo il flusso.")
         return
-    print("✅ primoLancio completato!\n")
+    print("tuttoCompreso.py/ ✅ primoLancio completato!\n")
 
-    print("🚀 Avvio prendiTutto()...")
+    print("tuttoCompreso.py/ 🚀 Avvio prendiTutto()...")
     completato = prendiTutto()
     if not completato:
-        print("❌ Errore in prendiTutto(), interrompo il flusso.")
+        print("tuttoCompreso.py/ ❌ Errore in prendiTutto(), interrompo il flusso.")
         return
-    print("✅ prendiTutto completato!\n")
+    print("tuttoCompreso.py/ ✅ prendiTutto completato!\n")
 
-    print("🚀 Avvio pulisciStringa()...")
+    print("tuttoCompreso.py/ 🚀 Avvio pulisciStringa()...")
     completato = pulisciStringa()
     if not completato:
-        print("❌ Errore in pulisciStringa(), interrompo il flusso.")
+        print("tuttoCompreso.py/ ❌ Errore in pulisciStringa(), interrompo il flusso.")
         return
-    print("✅ pulisciStringa completato!\n")
+    print("tuttoCompreso.py/ ✅ pulisciStringa completato!\n")
 
-    print("🚀 Avvio TopAziende()...")
+    print("tuttoCompreso.py/ 🚀 Avvio TopAziende()...")
     completato = TopAziende()
     if not completato:
-        print("❌ Errore in TopAziende(), interrompo il flusso.")
+        print("tuttoCompreso.py/ ❌ Errore in TopAziende(), interrompo il flusso.")
         return
-    print("✅ Tutto il processo completato con successo! 🎉")
+    print("tuttoCompreso.py/ ✅ Tutto il processo completato con successo! 🎉")
 
 
 if __name__ == "__main__":
