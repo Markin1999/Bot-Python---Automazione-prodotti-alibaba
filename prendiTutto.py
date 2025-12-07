@@ -4,15 +4,14 @@ from pathlib import Path
 import pandas as pd
 import re
 
-from utils import resource_path
+from utils import resource_path, get_output_dir
 
 
 def prendiTutto():
 
 
     src_dir = Path(resource_path("PagineHtml"))
-    out_dir = Path.cwd() / "All"
-    out_dir.mkdir(exist_ok=True)
+    out_dir = Path(get_output_dir("All"))
 
 
     files = sorted(src_dir.glob("*.xlsx"))
