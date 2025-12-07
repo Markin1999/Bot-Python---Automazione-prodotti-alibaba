@@ -3,11 +3,12 @@ from pathlib import Path
 import pandas as pd
 import re
 from ricercaTitolo import ricercaTitolo
+from utils import get_output_dir
 
 
 def TopAziende():
 
-    out_dir =  get_output_dir("filePuliti")
+    out_dir =  Path(get_output_dir("filePuliti"))
     out_dir.mkdir(parents=True, exist_ok=True)
 
     files = sorted(out_dir.glob("*.xlsx"))
@@ -69,11 +70,10 @@ def TopAziende():
 
 
 
-        output_file = out_dir / "topAziende.xlsx"
-        top.to_excel(output_file, index=False)
+        output_file = out_dir / f"topAziende.xlsx"
+        df.to_excel(output_file, index=False)
         print(f"✅ File salvato: {output_file}") 
     return "Pulizia completata e file salvati."
 
 if __name__ == "__main__":
     TopAziende()
-

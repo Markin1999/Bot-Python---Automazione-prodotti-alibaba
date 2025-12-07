@@ -10,9 +10,10 @@ echo "🚀 Generazione nuovo EXE..."
 
 pyinstaller --onefile \
   --add-data "file/macro.xlsx:file" \
-  --add-data "TopAziende:TopAziende" \
+  --add-data "filePuliti:filePuliti" \
   --add-data "PagineHtml:PagineHtml" \
   --add-data "All:All" \
+  --add-data "venv/lib/python3.9/site-packages/selenium_stealth/js:selenium_stealth/js" \
   tuttoCompreso.py
 
 echo "✅ Compilazione completata!"

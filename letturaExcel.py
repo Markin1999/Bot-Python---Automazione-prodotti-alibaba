@@ -15,6 +15,7 @@ from utils import resource_path  # importa la funzione dal tuo utils.py
 def letturaExcel(campo):
     # percorso corretto al file macro.xlsx
     macro_path = resource_path("file/macro.xlsx")
+    print(f"letturaExcel.py/ Percorso del file macro.xlsx: {macro_path}")
 
     df = pd.read_excel(macro_path)
     

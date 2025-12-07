@@ -5,7 +5,7 @@ a = Analysis(
     ['tuttoCompreso.py'],
     pathex=[],
     binaries=[],
-    datas=[('file/macro.xlsx', 'file'), ('TopAziende', 'TopAziende'), ('PagineHtml', 'PagineHtml'), ('All', 'All')],
+    datas=[('file/macro.xlsx', 'file'), ('filePuliti', 'filePuliti'), ('PagineHtml', 'PagineHtml'), ('All', 'All'), ('venv/lib/python3.9/site-packages/selenium_stealth/js', 'selenium_stealth/js')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},

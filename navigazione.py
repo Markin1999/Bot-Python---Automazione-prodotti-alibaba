@@ -24,7 +24,7 @@ def _norm_num(x):
 def primoLancio():
     try:
         ciclo_completato = False  
-
+        print(f"navigazione.py/ 🚀 Leggo nuovaLetturaExcel.")
         lunghezzaRicerca = len(nuovaLetturaExcel("Ricerca"))
         print(f"navigazione.py/ ℹ️ Lunghezza della lista 'Ricerca': {lunghezzaRicerca}")
 
@@ -68,6 +68,7 @@ def primoLancio():
                 search_box.send_keys(Keys.BACKSPACE)      
                 time.sleep(3)
                 time.sleep(3) 
+                print(f"navigazione.py/ Lancio Lettura Excel per ricerca")
                 ricerca_testo = letturaExcel("Ricerca")[macroAttuale -1]
                 print(f"navigazione.py/ 🔎 Ricerca da effettuare: -- {ricerca_testo}")
                 search_box.send_keys(ricerca_testo)
@@ -108,12 +109,16 @@ def primoLancio():
         else:
             print("navigazione.py/ 🔴 Ciclo interrotto: ultima modificaMacro() saltata per sicurezza.")
 
-    except IndexError:
+    except IndexError as e:
         print("navigazione.py/ ❌ Errore: indice fuori dai limiti della lista 'Ricerca' o 'NumeroProcesso'.")
-    except FileNotFoundError:
+        print(f"navigazione.py/ Debug IndexError: {e}")
+    except FileNotFoundError as e:
         print("navigazione.py/ ❌ Errore: file Excel non trovato. Controlla il percorso.")
+        print(f"navigazione.py/ Debug FileNotFoundError: {e}")
     except Exception as e:
         print(f"navigazione.py/ ⚠️ Errore imprevisto: {e}")
+        import traceback
+        traceback.print_exc()
     finally:
         try:
             

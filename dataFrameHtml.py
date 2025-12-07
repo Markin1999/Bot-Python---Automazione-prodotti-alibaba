@@ -2,6 +2,7 @@ import os
 import re
 import pandas as pd
 from bs4 import BeautifulSoup
+from utils import get_output_dir
 
 
 class Prodotto:
@@ -219,8 +220,9 @@ from bs4 import BeautifulSoup
 
 def dataFrameHtml(driver, nomeRicerca, numero_processo):
     try:
+        output_dir = get_output_dir("PagineHtml")
         file_name = f"{nomeRicerca}{numero_processo}.html"
-        percorso_completo = os.path.join("PagineHtml", file_name)
+        percorso_completo = os.path.join(output_dir, file_name)
 
         html = driver.execute_script("return document.documentElement.outerHTML;")
 
@@ -255,9 +257,8 @@ def dataFrameHtml(driver, nomeRicerca, numero_processo):
         rows = [{col: getattr(p, col, None) for col in colonne} for p in prodotti]
         df = pd.DataFrame(rows, columns=colonne)
 
-        os.makedirs("PagineHtml", exist_ok=True)
         df = df.fillna("").applymap(lambda x: " ".join(str(x).split()))
-        output_path = os.path.join("PagineHtml", f"{(numero_processo)}-{nomeRicerca}.xlsx")
+        output_path = os.path.join(output_dir, f"{(numero_processo)}-{nomeRicerca}.xlsx")
         df.to_excel(output_path, index=False, engine="openpyxl")
 
         print(f"dataFrameHtml.py/ ✅ Prodotti unici: {len(df)}")

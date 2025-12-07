@@ -1,7 +1,8 @@
 from openpyxl import Workbook, load_workbook
 import os
+from utils import resource_path
 
-file_path = "file/macro.xlsx"
+file_path = resource_path("file/macro.xlsx")
 
 def modificaExcel(cella, testo):
     if not os.path.exists(file_path):
