@@ -24,10 +24,10 @@ jobs:
 
       - name: Build EXE
         run: |
-          pyinstaller --onefile tuttoCompreso.py
+          pyinstaller --onefile tuo_script.py
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: exe-file
           path: dist/*.exe
