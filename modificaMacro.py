@@ -38,14 +38,16 @@ def modificaMacro():
         return numeroProcesso
 
     # Incrementa con wrap-around
-    if numeroProcesso < lunghezzaProcesso - 1:
+    if numeroProcesso < lunghezzaProcesso:
         numeroProcesso += 1
         modificaExcel("A2", str(numeroProcesso))
         print(f"modificaMacro.py/ ✅ Processo aumentato: {numeroProcesso}")
     else:
         numeroProcesso = 0
         modificaExcel("A2", str(numeroProcesso))
-        print("modificaMacro.py/ ✅ Processo resettato a 1")
+        print("modificaMacro.py/ ✅ Processo resettato a 0")
+
+    print(f"modificaMacro.py/ 🔄 Nuovo numeroProcesso: {numeroProcesso}")
     
     return numeroProcesso
 

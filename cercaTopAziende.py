@@ -7,7 +7,7 @@ from ricercaTitolo import ricercaTitolo
 
 def TopAziende():
 
-    out_dir = Path("filePuliti")
+    out_dir =  get_output_dir("filePuliti")
     out_dir.mkdir(parents=True, exist_ok=True)
 
     files = sorted(out_dir.glob("*.xlsx"))

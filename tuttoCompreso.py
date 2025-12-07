@@ -3,6 +3,9 @@ from prendiTutto import prendiTutto
 from pulizia import pulisciStringa
 from cercaTopAziende import TopAziende
 
+import os
+import sys
+
 
 def tuttoCompreso():
     print("tuttoCompreso.py/ 🚀 Avvio primoLancio()...")

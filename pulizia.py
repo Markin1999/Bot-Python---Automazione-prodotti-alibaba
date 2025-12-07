@@ -1,11 +1,14 @@
 from pathlib import Path
 import re
 import pandas as pd
+from utils import get_output_dir
 
 def pulisciStringa():
 
-    out_dir = Path("All")
-    filepuliti = Path("filePuliti")
+     # input: All
+    out_dir = Path(get_output_dir("All"))
+    # output: filePuliti
+    filepuliti = Path(get_output_dir("filePuliti"))
     out_dir.mkdir(parents=True, exist_ok=True)
     
     files = sorted(out_dir.glob("*.xlsx"))
