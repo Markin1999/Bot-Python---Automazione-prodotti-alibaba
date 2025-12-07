@@ -24,7 +24,7 @@ jobs:
 
       - name: Build EXE
         run: |
-          pyinstaller --onefile tuo_script.py
+          pyinstaller --onefile tuttoCompreso.py
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
