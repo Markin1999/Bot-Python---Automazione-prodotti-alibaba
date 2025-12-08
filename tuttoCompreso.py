@@ -2,12 +2,26 @@ from navigazione import primoLancio
 from prendiTutto import prendiTutto
 from pulizia import pulisciStringa
 from cercaTopAziende import TopAziende
+from pulisciCartelle import pulisciCartelle
 
 import os
 import sys
 
 
 def tuttoCompreso():
+
+    print("tuttoCompreso.py/ 🚀 Avvio pulisciCartelle()...")
+    try:
+        pulisciCartelle()
+    except Exception as e:
+        print(f"❌ Errore in pulisciCartelle(): {e}")
+        import traceback
+        traceback.print_exc()
+        exit(1)
+
+        print("tuttoCompreso.py/ ❌ Errore in pulisciCartelle(), interrompo il flusso.")
+    
+    print("tuttoCompreso.py/ ✅ pulisciCartelle completato!\n")
     
     print("tuttoCompreso.py/ 🚀 Avvio primoLancio()...")
     completato = primoLancio()
