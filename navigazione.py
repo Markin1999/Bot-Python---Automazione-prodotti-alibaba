@@ -64,7 +64,7 @@ def primoLancio():
 
                 search_box = driver.find_element(By.XPATH, '//input[@aria-label="Search Alibaba"]')
                 time.sleep(2)
-                search_box.send_keys(Keys.COMMAND + "a")  
+                search_box.send_keys(Keys.COMMAND + "a")  #Per windows cambiare con CONTROL
                 search_box.send_keys(Keys.BACKSPACE)      
                 time.sleep(3)
                 time.sleep(3) 
