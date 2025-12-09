@@ -1,0 +1,49 @@
+Orario,Log
+2025-12-09 17:21:59,tuttoCompreso.py/ 🚀 Avvio pulisciCartelle()...
+2025-12-09 17:21:59,PulisciCartelle.py/ 🧹 Pulizia della cartella: /Users/marcofilannino/Desktop/Bot-Python---Automazione-prodotti-alibaba/PagineHtml
+2025-12-09 17:21:59,PulisciCartelle.py/ 🧹 Pulizia della cartella: /Users/marcofilannino/Desktop/Bot-Python---Automazione-prodotti-alibaba/All
+2025-12-09 17:21:59,PulisciCartelle.py/ 🧹 Pulizia della cartella: /Users/marcofilannino/Desktop/Bot-Python---Automazione-prodotti-alibaba/filePuliti
+2025-12-09 17:21:59,"tuttoCompreso.py/ ✅ pulisciCartelle completato!
+"
+2025-12-09 17:21:59,tuttoCompreso.py/ 🚀 Avvio primoLancio()...
+2025-12-09 17:21:59,navigazione.py/ 🚀 Leggo nuovaLetturaExcel.
+2025-12-09 17:21:59,nuovaLetturaExcel.py/ Percorso del file macro.xlsx: /Users/marcofilannino/Desktop/Bot-Python---Automazione-prodotti-alibaba/file/macro.xlsx
+2025-12-09 17:21:59,navigazione.py/ ℹ️ Lunghezza della lista 'Ricerca': 2
+2025-12-09 17:22:07,letturaExcel.py/ Percorso del file macro.xlsx: /Users/marcofilannino/Desktop/Bot-Python---Automazione-prodotti-alibaba/file/macro.xlsx
+2025-12-09 17:22:07,navigazione.py/ 🔎 Avvio ricerca 1 : Rapporto 1/2...
+2025-12-09 17:22:10,navigazione.py/ 🔎 Clicco il tasto di ricerca
+2025-12-09 17:22:18,navigazione.py/ Lancio Lettura Excel per ricerca
+2025-12-09 17:22:18,letturaExcel.py/ Percorso del file macro.xlsx: /Users/marcofilannino/Desktop/Bot-Python---Automazione-prodotti-alibaba/file/macro.xlsx
+2025-12-09 17:22:18,navigazione.py/ 🔎 Ricerca da effettuare: -- test
+2025-12-09 17:22:30,letturaExcel.py/ Percorso del file macro.xlsx: /Users/marcofilannino/Desktop/Bot-Python---Automazione-prodotti-alibaba/file/macro.xlsx
+2025-12-09 17:22:30,letturaExcel.py/ Percorso del file macro.xlsx: /Users/marcofilannino/Desktop/Bot-Python---Automazione-prodotti-alibaba/file/macro.xlsx
+2025-12-09 17:22:30,utils.py/ ⚙️ MODALITA' SVILUPPO - base_dir: /Users/marcofilannino/Desktop/Bot-Python---Automazione-prodotti-alibaba
+2025-12-09 17:22:30,utils.py/ ⚙️ Creando cartella: /Users/marcofilannino/Desktop/Bot-Python---Automazione-prodotti-alibaba/PagineHtml
+2025-12-09 17:22:30,utils.py/ ✅ Cartella creata/verificata: /Users/marcofilannino/Desktop/Bot-Python---Automazione-prodotti-alibaba/PagineHtml
+2025-12-09 17:22:31,dataFrameHtml.py/ ✅ Prodotti unici: 48
+2025-12-09 17:22:31,dataFrameHtml.py ✅ File Excel salvato in: /Users/marcofilannino/Desktop/Bot-Python---Automazione-prodotti-alibaba/PagineHtml/1-carta.xlsx
+2025-12-09 17:22:40,cambiaPagina.py/ ➡️ Pagina cambiata con successo.
+2025-12-09 17:22:45,utils.py/ ⚙️ MODALITA' SVILUPPO - base_dir: /Users/marcofilannino/Desktop/Bot-Python---Automazione-prodotti-alibaba
+2025-12-09 17:22:45,utils.py/ ⚙️ Creando cartella: /Users/marcofilannino/Desktop/Bot-Python---Automazione-prodotti-alibaba/PagineHtml
+2025-12-09 17:22:45,utils.py/ ✅ Cartella creata/verificata: /Users/marcofilannino/Desktop/Bot-Python---Automazione-prodotti-alibaba/PagineHtml
+2025-12-09 17:22:46,dataFrameHtml.py/ ✅ Prodotti unici: 48
+2025-12-09 17:22:46,dataFrameHtml.py ✅ File Excel salvato in: /Users/marcofilannino/Desktop/Bot-Python---Automazione-prodotti-alibaba/PagineHtml/1-01-carta.xlsx
+2025-12-09 17:22:55,cambiaPagina.py/ ➡️ Pagina cambiata con successo.
+2025-12-09 17:23:00,utils.py/ ⚙️ MODALITA' SVILUPPO - base_dir: /Users/marcofilannino/Desktop/Bot-Python---Automazione-prodotti-alibaba
+2025-12-09 17:23:00,utils.py/ ⚙️ Creando cartella: /Users/marcofilannino/Desktop/Bot-Python---Automazione-prodotti-alibaba/PagineHtml
+2025-12-09 17:23:00,utils.py/ ✅ Cartella creata/verificata: /Users/marcofilannino/Desktop/Bot-Python---Automazione-prodotti-alibaba/PagineHtml
+2025-12-09 17:23:01,dataFrameHtml.py/ ✅ Prodotti unici: 48
+2025-12-09 17:23:01,dataFrameHtml.py ✅ File Excel salvato in: /Users/marcofilannino/Desktop/Bot-Python---Automazione-prodotti-alibaba/PagineHtml/1-02-carta.xlsx
+2025-12-09 17:23:01,navigazione.py/ ✅ Ricerca 1/2 completata
+2025-12-09 17:23:01,"navigazione.py/ ✅ Ciclo completato, modifico la macro"
+2025-12-09 17:23:01,letturaExcel.py/ Percorso del file macro.xlsx: /Users/marcofilannino/Desktop/Bot-Python---Automazione-prodotti-alibaba/file/macro.xlsx
+2025-12-09 17:23:01,letturaExcel.py/ Percorso del file macro.xlsx: /Users/marcofilannino/Desktop/Bot-Python---Automazione-prodotti-alibaba/file/macro.xlsx
+2025-12-09 17:23:01,modificaExcel.py/ ✅ La cella A2 è stata modificata correttamente in macro.xlsx
+2025-12-09 17:23:01,modificaMacro.py/ ✅ Processo aumentato: 2
+2025-12-09 17:23:01,modificaMacro.py/ 🔄 Nuovo numeroProcesso: 2
+2025-12-09 17:23:01,letturaExcel.py/ Percorso del file macro.xlsx: /Users/marcofilannino/Desktop/Bot-Python---Automazione-prodotti-alibaba/file/macro.xlsx
+2025-12-09 17:23:01,navigazione.py/ 🔎 Avvio ricerca 2 : Rapporto 2/2...
+2025-12-09 17:23:04,navigazione.py/ 🔎 Clicco il tasto di ricerca
+2025-12-09 17:23:12,navigazione.py/ Lancio Lettura Excel per ricerca
+2025-12-09 17:23:12,letturaExcel.py/ Percorso del file macro.xlsx: /Users/marcofilannino/Desktop/Bot-Python---Automazione-prodotti-alibaba/file/macro.xlsx
+2025-12-09 17:23:12,navigazione.py/ 🔎 Ricerca da effettuare: -- test2

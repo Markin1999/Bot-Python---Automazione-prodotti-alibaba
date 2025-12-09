@@ -11,6 +11,7 @@ from dataFrameHtml import dataFrameHtml
 from cambiaPagina import cambiaPagina
 from NuovaLetturaExcel import nuovaLetturaExcel
 import re
+from logger import log
 
 def _norm_num(x):
     s = str(x).strip()
@@ -24,9 +25,9 @@ def _norm_num(x):
 def primoLancio():
     try:
         ciclo_completato = False  
-        print(f"navigazione.py/ 🚀 Leggo nuovaLetturaExcel.")
+        log(f"navigazione.py/ 🚀 Leggo nuovaLetturaExcel.")
         lunghezzaRicerca = len(nuovaLetturaExcel("Ricerca"))
-        print(f"navigazione.py/ ℹ️ Lunghezza della lista 'Ricerca': {lunghezzaRicerca}")
+        log(f"navigazione.py/ ℹ️ Lunghezza della lista 'Ricerca': {lunghezzaRicerca}")
 
 
         options = Options()
@@ -56,11 +57,11 @@ def primoLancio():
 
             
             macroAttuale = int(letturaExcel("NumeroProcesso")[0])
-            print(f"navigazione.py/ 🔎 Avvio ricerca {macroAttuale} : Rapporto {t+1}/{lunghezzaRicerca}...")
+            log(f"navigazione.py/ 🔎 Avvio ricerca {macroAttuale} : Rapporto {t+1}/{lunghezzaRicerca}...")
 
             try:
                 time.sleep(3)
-                print(f"navigazione.py/ 🔎 Clicco il tasto di ricerca")
+                log(f"navigazione.py/ 🔎 Clicco il tasto di ricerca")
 
                 search_box = driver.find_element(By.XPATH, '//input[@aria-label="Search Alibaba"]')
                 time.sleep(2)
@@ -68,9 +69,9 @@ def primoLancio():
                 search_box.send_keys(Keys.BACKSPACE)      
                 time.sleep(3)
                 time.sleep(3) 
-                print(f"navigazione.py/ Lancio Lettura Excel per ricerca")
+                log(f"navigazione.py/ Lancio Lettura Excel per ricerca")
                 ricerca_testo = letturaExcel("Ricerca")[macroAttuale -1]
-                print(f"navigazione.py/ 🔎 Ricerca da effettuare: -- {ricerca_testo}")
+                log(f"navigazione.py/ 🔎 Ricerca da effettuare: -- {ricerca_testo}")
                 search_box.send_keys(ricerca_testo)
                 time.sleep(1)
                 search_box.send_keys(Keys.RETURN)
@@ -92,33 +93,33 @@ def primoLancio():
                 time.sleep(5)
                 dataFrameHtml(driver, ricerca, f"{numero_processo}-02")
 
-                print(f"navigazione.py/ ✅ Ricerca {t+1}/{lunghezzaRicerca} completata")
+                log(f"navigazione.py/ ✅ Ricerca {t+1}/{lunghezzaRicerca} completata")
                 ciclo_completato = True  
-                print(f"navigazione.py/ ✅ Ciclo completato, modifico la macro")
+                log(f"navigazione.py/ ✅ Ciclo completato, modifico la macro")
                 modificaMacro()
 
             except Exception as e:
-                print(f"navigazione.py/ ⚠️ Errore durante la ricerca {t+1}: {e}")
+                log(f"navigazione.py/ ⚠️ Errore durante la ricerca {t+1}: {e}")
                 ciclo_completato = False
                 break  
 
      
         if ciclo_completato:
             modificaMacro()
-            print("navigazione.py/ 🟢 Tutte le ricerche completate con successo!")
+            log("navigazione.py/ 🟢 Tutte le ricerche completate con successo!")
         else:
-            print("navigazione.py/ 🔴 Ciclo interrotto: ultima modificaMacro() saltata per sicurezza.")
+            log("navigazione.py/ 🔴 Ciclo interrotto: ultima modificaMacro() saltata per sicurezza.")
 
     except IndexError as e:
-        print("navigazione.py/ ❌ Errore: indice fuori dai limiti della lista 'Ricerca' o 'NumeroProcesso'.")
-        print(f"navigazione.py/ Debug IndexError: {e}")
+        log("navigazione.py/ ❌ Errore: indice fuori dai limiti della lista 'Ricerca' o 'NumeroProcesso'.")
+        log(f"navigazione.py/ Debug IndexError: {e}")
     except FileNotFoundError as e:
-        print("navigazione.py/ ❌ Errore: file Excel non trovato. Controlla il percorso.")
-        print(f"navigazione.py/ Debug FileNotFoundError: {e}")
+        log("navigazione.py/ ❌ Errore: file Excel non trovato. Controlla il percorso.")
+        log(f"navigazione.py/ Debug FileNotFoundError: {e}")
     except Exception as e:
-        print(f"navigazione.py/ ⚠️ Errore imprevisto: {e}")
+        log(f"navigazione.py/ ⚠️ Errore imprevisto: {e}")
         import traceback
-        traceback.print_exc()
+        traceback.log_exc()
     finally:
         try:
             

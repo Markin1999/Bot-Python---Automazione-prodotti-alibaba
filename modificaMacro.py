@@ -1,5 +1,6 @@
 from letturaExcel import letturaExcel   
 from modificaExcel import modificaExcel 
+from logger import log
 
 def modificaMacro():
     numeroProcesso = letturaExcel("NumeroProcesso")[0]
@@ -14,7 +15,7 @@ def modificaMacro():
     
     if processi_raw is None:
         modificaExcel("A2", "1")
-        print("modificaMacro.py/ ❌ Errore: 'Processi' è None")
+        log("modificaMacro.py/ ❌ Errore: 'Processi' è None")
         return None
     
     try:
@@ -22,17 +23,17 @@ def modificaMacro():
         lunghezzaProcesso = len(processi)
     except (TypeError, AttributeError):
         modificaExcel("A2", "1")
-        print("modificaMacro.py/ ❌ Errore nel leggere 'Processi'")
+        log("modificaMacro.py/ ❌ Errore nel leggere 'Processi'")
         return None
 
     if lunghezzaProcesso == 0:
         modificaExcel("A2", "1")
-        print("modificaMacro.py/ ℹ️ Nessun processo valido: valore impostato a 1 in macro.xlsx")
+        log("modificaMacro.py/ ℹ️ Nessun processo valido: valore impostato a 1 in macro.xlsx")
         return None
 
     # Valida che numeroProcesso sia nell'intervallo corretto
     if numeroProcesso >= lunghezzaProcesso:
-        print(f"modificaMacro.py/ ⚠️ numeroProcesso ({numeroProcesso}) >= lunghezza ({lunghezzaProcesso}), resetto a 1")
+        log(f"modificaMacro.py/ ⚠️ numeroProcesso ({numeroProcesso}) >= lunghezza ({lunghezzaProcesso}), resetto a 1")
         numeroProcesso = 0
         modificaExcel("A2", "1")
         return numeroProcesso
@@ -41,13 +42,13 @@ def modificaMacro():
     if numeroProcesso < lunghezzaProcesso:
         numeroProcesso += 1
         modificaExcel("A2", str(numeroProcesso))
-        print(f"modificaMacro.py/ ✅ Processo aumentato: {numeroProcesso}")
+        log(f"modificaMacro.py/ ✅ Processo aumentato: {numeroProcesso}")
     else:
         numeroProcesso = 0
         modificaExcel("A2", str(numeroProcesso))
-        print("modificaMacro.py/ ✅ Processo resettato a 0")
+        log("modificaMacro.py/ ✅ Processo resettato a 0")
 
-    print(f"modificaMacro.py/ 🔄 Nuovo numeroProcesso: {numeroProcesso}")
+    log(f"modificaMacro.py/ 🔄 Nuovo numeroProcesso: {numeroProcesso}")
     
     return numeroProcesso
 
@@ -65,7 +66,7 @@ def menoUnoMacro():
     
     if processi_raw is None:
         modificaExcel("A2", "1")
-        print("modificaMacro.py/ ❌ Errore: 'Processi' è None")
+        log("modificaMacro.py/ ❌ Errore: 'Processi' è None")
         return None
     
     try:
@@ -73,17 +74,17 @@ def menoUnoMacro():
         lunghezzaProcesso = len(processi)
     except (TypeError, AttributeError):
         modificaExcel("A2", "1")
-        print("modificaMacro.py/ ❌ Errore nel leggere 'Processi'")
+        log("modificaMacro.py/ ❌ Errore nel leggere 'Processi'")
         return None
 
     if lunghezzaProcesso == 0:
         modificaExcel("A2", "1")
-        print("modificaMacro.py/ ℹ️ Nessun processo valido: valore impostato a 1 in macro.xlsx")
+        log("modificaMacro.py/ ℹ️ Nessun processo valido: valore impostato a 1 in macro.xlsx")
         return None
 
     # Valida che numeroProcesso sia nell'intervallo corretto
     if numeroProcesso >= lunghezzaProcesso:
-        print(f"modificaMacro.py/ ⚠️ numeroProcesso ({numeroProcesso}) >= lunghezza ({lunghezzaProcesso}), resetto all'ultimo")
+        log(f"modificaMacro.py/ ⚠️ numeroProcesso ({numeroProcesso}) >= lunghezza ({lunghezzaProcesso}), resetto all'ultimo")
         numeroProcesso = lunghezzaProcesso - 1
         modificaExcel("A2", str(numeroProcesso))
         return numeroProcesso
@@ -92,20 +93,20 @@ def menoUnoMacro():
     if numeroProcesso > 0:
         numeroProcesso -= 1
         modificaExcel("A2", "1")
-        print(f"modificaMacro.py/ ✅ Processo diminuito: {numeroProcesso}")
+        log(f"modificaMacro.py/ ✅ Processo diminuito: {numeroProcesso}")
     else:
         numeroProcesso = lunghezzaProcesso - 1
         modificaExcel("A2", str(numeroProcesso))
-        print(f"modificaMacro.py/ ✅ Processo riportato all'ultimo: {numeroProcesso}")
+        log(f"modificaMacro.py/ ✅ Processo riportato all'ultimo: {numeroProcesso}")
     
     return numeroProcesso
 
 
 if __name__ == "__main__":
-    print("modificaMacro.py/ === Test modificaMacro ===")
+    log("modificaMacro.py/ === Test modificaMacro ===")
     risultato = modificaMacro()
-    print(f"modificaMacro.py/ Risultato: {risultato}\n")
+    log(f"modificaMacro.py/ Risultato: {risultato}\n")
     
-    print("modificaMacro.py/ === Test menoUnoMacro ===")
+    log("modificaMacro.py/ === Test menoUnoMacro ===")
     risultato = menoUnoMacro()
-    print(f"modificaMacro.py/ Risultato: {risultato}")
+    log(f"modificaMacro.py/ Risultato: {risultato}")

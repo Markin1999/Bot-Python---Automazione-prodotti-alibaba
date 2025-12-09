@@ -1,6 +1,7 @@
 from openpyxl import Workbook, load_workbook
 import os
 from utils import resource_path
+from logger import log
 
 file_path = resource_path("file/macro.xlsx")
 
@@ -15,6 +16,6 @@ def modificaExcel(cella, testo):
 
     ws[cella] = testo
     wb.save(file_path)
-    print(f"modificaExcel.py/ ✅ La cella {cella} è stata modificata correttamente in macro.xlsx")
+    log(f"modificaExcel.py/ ✅ La cella {cella} è stata modificata correttamente in macro.xlsx")
 
     

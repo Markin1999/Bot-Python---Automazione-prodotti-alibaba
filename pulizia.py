@@ -2,6 +2,7 @@ from pathlib import Path
 import re
 import pandas as pd
 from utils import get_output_dir
+from logger import log
 
 def pulisciStringa():
 
@@ -14,12 +15,13 @@ def pulisciStringa():
     files = sorted(out_dir.glob("*.xlsx"))
     if not files:
         raise FileNotFoundError("pulizia.py/ Nessun file .xlsx trovato in 'All'.")
+        log("pulizia.py/ Nessun file .xlsx trovato in 'All'.")
 
     for f in files:
         df = pd.read_excel(f, sheet_name=0)
 
         if 'prezzo' not in df.columns:
-            print(f"pulizia.py/ ⚠️ Colonna 'prezzo' non trovata durante la\ pulizia")
+            log(f"pulizia.py/ ⚠️ Colonna 'prezzo' non trovata durante la\ pulizia")
             continue
 
         prezzi = df['prezzo'].dropna()

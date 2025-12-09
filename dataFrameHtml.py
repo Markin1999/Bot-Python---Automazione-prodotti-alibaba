@@ -217,6 +217,7 @@ import os
 import pandas as pd
 import traceback
 from bs4 import BeautifulSoup
+from logger import log
 
 def dataFrameHtml(driver, nomeRicerca, numero_processo):
     try:
@@ -229,6 +230,7 @@ def dataFrameHtml(driver, nomeRicerca, numero_processo):
         # ⛔️ Se HTML è vuoto o quasi, blocco subito
         if not html or not str(html).strip():
             raise RuntimeError("HTML vuoto: impossibile procedere con il parsing.")
+            log("dataFrameHtml.py/ ⚠️ HTML vuoto: impossibile procedere con il parsing.")
 
         soupInput = BeautifulSoup(html, "html.parser")
 
@@ -261,13 +263,13 @@ def dataFrameHtml(driver, nomeRicerca, numero_processo):
         output_path = os.path.join(output_dir, f"{(numero_processo)}-{nomeRicerca}.xlsx")
         df.to_excel(output_path, index=False, engine="openpyxl")
 
-        print(f"dataFrameHtml.py/ ✅ Prodotti unici: {len(df)}")
-        print(f"dataFrameHtml.py ✅ File Excel salvato in: {output_path}")
+        log(f"dataFrameHtml.py/ ✅ Prodotti unici: {len(df)}")
+        log(f"dataFrameHtml.py ✅ File Excel salvato in: {output_path}")
         return df
 
     except Exception as e:
-        print(f"dataFrame.py/ ⚠️ Errore in dataFrameHtml: {e}")
-        traceback.print_exc()
+        log(f"dataFrame.py/ ⚠️ Errore in dataFrameHtml: {e}")
+        traceback.log_exc()
         # Rilancio l'errore per bloccare l'esecuzione a monte
         raise
 

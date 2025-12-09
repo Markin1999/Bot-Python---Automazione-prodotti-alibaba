@@ -1,5 +1,6 @@
 import os, sys
 from pathlib import Path
+from logger import log
 
 def resource_path(relative_path):
     if hasattr(sys, '_MEIPASS'):
@@ -13,7 +14,7 @@ def get_output_dir(name):
     if getattr(sys, 'frozen', False):  
         # Siamo in EXECUTABLE (PyInstaller)
         base_dir = Path(sys._MEIPASS)  # cartella stabilita da PyInstaller
-        print(f"utils.py/ ⚙️ MODALITA' EXE - base_dir: {base_dir}")
+        log(f"utils.py/ ⚙️ MODALITA' EXE - base_dir: {base_dir}")
 
         # Le cartelle scrivibili NON possono stare dentro _MEIPASS (solo lettura!)
         # quindi usiamo la directory dell’eseguibile:
@@ -24,10 +25,10 @@ def get_output_dir(name):
         # Siamo in sviluppo
         base_dir = Path(os.path.dirname(__file__))
         folder = base_dir / name
-        print(f"utils.py/ ⚙️ MODALITA' SVILUPPO - base_dir: {base_dir}")
+        log(f"utils.py/ ⚙️ MODALITA' SVILUPPO - base_dir: {base_dir}")
 
-    print(f"utils.py/ ⚙️ Creando cartella: {folder}")
+    log(f"utils.py/ ⚙️ Creando cartella: {folder}")
     folder.mkdir(parents=True, exist_ok=True)
-    print(f"utils.py/ ✅ Cartella creata/verificata: {folder}")
+    log(f"utils.py/ ✅ Cartella creata/verificata: {folder}")
 
     return folder

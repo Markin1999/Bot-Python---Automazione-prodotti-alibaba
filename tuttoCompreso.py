@@ -3,6 +3,7 @@ from prendiTutto import prendiTutto
 from pulizia import pulisciStringa
 from cercaTopAziende import TopAziende
 from pulisciCartelle import pulisciCartelle
+from logger import log
 
 import os
 import sys
@@ -10,47 +11,47 @@ import sys
 
 def tuttoCompreso():
 
-    print("tuttoCompreso.py/ 🚀 Avvio pulisciCartelle()...")
+    log("tuttoCompreso.py/ 🚀 Avvio pulisciCartelle()...")
     try:
         pulisciCartelle()
     except Exception as e:
-        print(f"❌ Errore in pulisciCartelle(): {e}")
+        log(f"❌ Errore in pulisciCartelle(): {e}")
         import traceback
         traceback.print_exc()
         exit(1)
 
-        print("tuttoCompreso.py/ ❌ Errore in pulisciCartelle(), interrompo il flusso.")
+        log("tuttoCompreso.py/ ❌ Errore in pulisciCartelle(), interrompo il flusso.")
     
-    print("tuttoCompreso.py/ ✅ pulisciCartelle completato!\n")
+    log("tuttoCompreso.py/ ✅ pulisciCartelle completato!\n")
     
-    print("tuttoCompreso.py/ 🚀 Avvio primoLancio()...")
+    log("tuttoCompreso.py/ 🚀 Avvio primoLancio()...")
     completato = primoLancio()
     if not completato:
-        print("tuttoCompreso.py/ ❌ Primo lancio non completato, interrompo il flusso.")
+        log("tuttoCompreso.py/ ❌ Primo lancio non completato, interrompo il flusso.")
         return
-    print("tuttoCompreso.py/ ✅ primoLancio completato!\n")
+    log("tuttoCompreso.py/ ✅ primoLancio completato!\n")
     
     
-    print("tuttoCompreso.py/ 🚀 Avvio prendiTutto()...")
+    log("tuttoCompreso.py/ 🚀 Avvio prendiTutto()...")
     completato = prendiTutto()
     if not completato:
         print("tuttoCompreso.py/ ❌ Errore in prendiTutto(), interrompo il flusso.")
         return
-    print("tuttoCompreso.py/ ✅ prendiTutto completato!\n")
+    log("tuttoCompreso.py/ ✅ prendiTutto completato!\n")
 
-    print("tuttoCompreso.py/ 🚀 Avvio pulisciStringa()...")
+    log("tuttoCompreso.py/ 🚀 Avvio pulisciStringa()...")
     completato = pulisciStringa()
     if not completato:
         print("tuttoCompreso.py/ ❌ Errore in pulisciStringa(), interrompo il flusso.")
         return
-    print("tuttoCompreso.py/ ✅ pulisciStringa completato!\n")
+    log("tuttoCompreso.py/ ✅ pulisciStringa completato!\n")
 
-    print("tuttoCompreso.py/ 🚀 Avvio TopAziende()...")
+    log("tuttoCompreso.py/ 🚀 Avvio TopAziende()...")
     completato = TopAziende()
     if not completato:
         print("tuttoCompreso.py/ ❌ Errore in TopAziende(), interrompo il flusso.")
         return
-    print("tuttoCompreso.py/ ✅ Tutto il processo completato con successo! 🎉")
+    log("tuttoCompreso.py/ ✅ Tutto il processo completato con successo! 🎉")
 
 
 if __name__ == "__main__":

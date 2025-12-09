@@ -6,6 +6,7 @@ from selenium.common.exceptions import (
     TimeoutException, ElementClickInterceptedException,
     StaleElementReferenceException, NoSuchElementException
 )
+from logger import log
 
 def cambiaPagina(driver, XPATH, timeout=15, tries=3):
     last_err = None
@@ -33,7 +34,7 @@ def cambiaPagina(driver, XPATH, timeout=15, tries=3):
                 # In app SPA potrebbe non diventare 'stale': piccola attesa di sicurezza
                 time.sleep(2)
 
-            print("cambiaPagina.py/ ➡️ Pagina cambiata con successo.")
+            log("cambiaPagina.py/ ➡️ Pagina cambiata con successo.")
             return True
 
         except (TimeoutException, ElementClickInterceptedException,
@@ -43,5 +44,5 @@ def cambiaPagina(driver, XPATH, timeout=15, tries=3):
             driver.execute_script("window.scrollBy(0, -120);")
             time.sleep(1)
 
-    print(f"cambiaPagina.py/ ⚠️ Errore nel cambiare pagina dopo {tries} tentativi: {last_err}")
+    log(f"cambiaPagina.py/ ⚠️ Errore nel cambiare pagina dopo {tries} tentativi: {last_err}")
     return False

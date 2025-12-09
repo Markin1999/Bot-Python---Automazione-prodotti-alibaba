@@ -3,7 +3,7 @@
 from pathlib import Path
 import pandas as pd
 import re
-
+from logger import log
 from utils import resource_path, get_output_dir
 
 
@@ -45,14 +45,14 @@ def prendiTutto():
 
             frames.append(df)
         except Exception as e:
-            print(f"prendiTutto.py/ ⚠️ Errore su {f.name}: {e}")
+            log(f"prendiTutto.py/ ⚠️ Errore su {f.name}: {e}")
 
     merged = pd.concat(frames, ignore_index=True) if frames else pd.DataFrame()
 
     # Salva in Excel
     output_path = out_dir / "unione.xlsx"
     merged.to_excel(output_path, index=False)
-    print(f"prendiTutto.py/ ✅ File creato: {output_path}")
+    log(f"prendiTutto.py/ ✅ File creato: {output_path}")
     return True
 
 if __name__ == "__main__":
