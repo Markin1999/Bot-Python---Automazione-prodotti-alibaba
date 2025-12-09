@@ -47,3 +47,7 @@ Orario,Log
 2025-12-09 17:23:12,navigazione.py/ Lancio Lettura Excel per ricerca
 2025-12-09 17:23:12,letturaExcel.py/ Percorso del file macro.xlsx: /Users/marcofilannino/Desktop/Bot-Python---Automazione-prodotti-alibaba/file/macro.xlsx
 2025-12-09 17:23:12,navigazione.py/ 🔎 Ricerca da effettuare: -- test2
+2025-12-09 17:23:21,letturaExcel.py/ Percorso del file macro.xlsx: /Users/marcofilannino/Desktop/Bot-Python---Automazione-prodotti-alibaba/file/macro.xlsx
+2025-12-09 17:23:21,letturaExcel.py/ Percorso del file macro.xlsx: /Users/marcofilannino/Desktop/Bot-Python---Automazione-prodotti-alibaba/file/macro.xlsx
+2025-12-09 17:23:21,"modificaMacro.py/ ⚠️ numeroProcesso (2) >= lunghezza (2), resetto all'ultimo"
+2025-12-09 17:23:21,modificaExcel.py/ ✅ La cella A2 è stata modificata correttamente in macro.xlsx

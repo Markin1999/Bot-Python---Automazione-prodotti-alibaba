@@ -13,6 +13,7 @@ pyinstaller --onefile \
   --add-data "filePuliti:filePuliti" \
   --add-data "PagineHtml:PagineHtml" \
   --add-data "All:All" \
+  --add-data "log:log" \
   --add-data "venv/lib/python3.9/site-packages/selenium_stealth/js:selenium_stealth/js" \
   tuttoCompreso.py
 
