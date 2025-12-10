@@ -11,6 +11,7 @@ from dataFrameHtml import dataFrameHtml
 from cambiaPagina import cambiaPagina
 from NuovaLetturaExcel import nuovaLetturaExcel
 import re
+from creaDriver import crea_driver
 from logger import log
 
 def _norm_num(x):
@@ -37,7 +38,7 @@ def primoLancio():
             "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
         )
 
-        driver = webdriver.Chrome(options=options)
+        driver = crea_driver()
         driver.get("https://www.alibaba.com")
 
         stealth(

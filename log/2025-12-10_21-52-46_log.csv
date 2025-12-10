@@ -1,0 +1,12 @@
+Orario,Log
+2025-12-10 21:52:46,tuttoCompreso.py/ 🚀 Avvio pulisciCartelle()...
+2025-12-10 21:52:46,PulisciCartelle.py/ 🧹 Pulizia della cartella: /Users/marcofilannino/Desktop/Bot-Python---Automazione-prodotti-alibaba/PagineHtml
+2025-12-10 21:52:46,PulisciCartelle.py/ 🧹 Pulizia della cartella: /Users/marcofilannino/Desktop/Bot-Python---Automazione-prodotti-alibaba/All
+2025-12-10 21:52:46,PulisciCartelle.py/ 🧹 Pulizia della cartella: /Users/marcofilannino/Desktop/Bot-Python---Automazione-prodotti-alibaba/filePuliti
+2025-12-10 21:52:46,"tuttoCompreso.py/ ✅ pulisciCartelle completato!
+"
+2025-12-10 21:52:46,tuttoCompreso.py/ 🚀 Avvio primoLancio()...
+2025-12-10 21:52:46,navigazione.py/ 🚀 Leggo nuovaLetturaExcel.
+2025-12-10 21:52:46,nuovaLetturaExcel.py/ Percorso del file macro.xlsx: /Users/marcofilannino/Desktop/Bot-Python---Automazione-prodotti-alibaba/file/macro.xlsx
+2025-12-10 21:52:46,navigazione.py/ ℹ️ Lunghezza della lista 'Ricerca': 2
+2025-12-10 21:52:48,navigazione.py/ ⚠️ Errore imprevisto: name 'driver' is not defined

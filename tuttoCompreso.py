@@ -4,10 +4,9 @@ from pulizia import pulisciStringa
 from cercaTopAziende import TopAziende
 from pulisciCartelle import pulisciCartelle
 from logger import log
-
 import os
 import sys
-
+import traceback
 
 def tuttoCompreso():
 
@@ -16,7 +15,6 @@ def tuttoCompreso():
         pulisciCartelle()
     except Exception as e:
         log(f"❌ Errore in pulisciCartelle(): {e}")
-        import traceback
         traceback.print_exc()
         exit(1)
 
